@@ -1,22 +1,12 @@
-jest.dontMock('../../constants/UserConstants');
-jest.dontMock('../UserStore');
-jest.dontMock('object-assign');
+jest.dontMock('backbone');
+jest.dontMock('../Classes/Store');
+jest.dontMock('../Classes/UserStore');
+var UserStore = require('../Classes/UserStore');
 
 describe('UserStore', function() {
-
-  var UserStore;
-
-  beforeEach(function() {
-    UserStore = require('../UserStore');
+  it('should get all users', function() {
+    spyOn(UserStore.prototype, 'fetch');
+    var result = new UserStore();
+    expect(result.fetch).toHaveBeenCalled();
   });
-
-  it('should call common to get all teams', function() {
-    var common = require('../../utils/common'),
-        resources = require('../../utils/resources');
-    UserStore.getAll();
-    UserStore.getCurrentUser();
-    expect(common.getAllUsers).toBeCalled();
-    expect(common.getCurrentUserInfo).toBeCalled();
-  });
-
 });

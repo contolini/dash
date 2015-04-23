@@ -14,15 +14,15 @@ var Router = require('react-router');
 
 var App = React.createClass({
   stores: {
-    teamStore: require('../stores/TeamStore'),
-    userStore: require('../stores/UserStore'),
-    loggedInStore: require('../stores/LoggedInStore'),
+    teamStore: require('../stores/teamStore'),
+    userStore: require('../stores/userStore'),
+    loggedInStore: require('../stores/loggedInStore')
   },
   getAppState: function() {
     return {
       teams: this.stores.teamStore.getState(),
       users: this.stores.userStore.getState(),
-      loggedInUser: this.stores.loggedInStore.getState(),
+      loggedInUser: this.stores.loggedInStore.getState()
     };
   },
   getInitialState: function() {
@@ -55,9 +55,9 @@ var App = React.createClass({
     var Body = <div></div>;
 
     if (this.isReady()) {
-      Body = <div>
+      Body = (<div>
         <Router.RouteHandler {...this.state} />
-      </div>;
+      </div>);
     } else if (this.state.loggedInUser.isLoggedIn()) {
       Body = <div>Loading...</div>;
     }
