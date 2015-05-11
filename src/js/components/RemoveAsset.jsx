@@ -39,7 +39,7 @@ var RemoveAsset = React.createClass({
     } else {
       return (
         <span className='remove-asset'>
-          <Icon type={['minus-round', 'action']} color='red' onClick={this.handleConfirm} />
+          <Icon type='remove' className='action' color='red' onClick={this.handleConfirm} />
         </span>
       );
     }

@@ -17,13 +17,12 @@ var RemoveMember = React.createClass({
   handleCancel: function() {
     this.setState({isConfirming: false});
   },
-  handleRemove: function( e ) {
+  handleRemove: function() {
     TeamActions.removeMember({
       id: this.props.teamName,
       roleName: this.props.roleName,
       userId: this.props.userId
     });
-
   },
   render: function() {
     if (this.state.isConfirming) {
@@ -39,7 +38,7 @@ var RemoveMember = React.createClass({
     } else {
       return (
         <span className="remove-component">
-          <Icon type={['minus-round', 'action']} color='red' onClick={this.handleConfirm} />
+          <Icon type='remove' className='action' color='red' onClick={this.handleConfirm} />
         </span>
       );
     }

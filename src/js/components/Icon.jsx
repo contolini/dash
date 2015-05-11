@@ -9,13 +9,11 @@ var Icon = React.createClass({
   },
   getDefaultProps: function() {
     return {
-      type: 'error'
+      type: 'checkmark'
     };
   },
   render: function() {
-    var types = this.props.type instanceof Array
-              ? 'cf-icon cf-icon-' + this.props.type.join(' cf-icon-')
-              : 'cf-icon cf-icon-' + this.props.type;
+    var types = this.props.type + ' icon';
     types = this.props.disabled ? types + ' disabled' : types;
     types = this.props.className ? types + ' ' + this.props.className : types;
     var style = {};
@@ -23,7 +21,7 @@ var Icon = React.createClass({
       style.color = this.props.color;
     }
     return (
-      <span onClick={this.props.onClick} className={types} style={style} title={this.props.title}></span>
+      <i onClick={this.props.onClick} className={types} style={style} title={this.props.title}></i>
     );
   }
 });

@@ -8,15 +8,12 @@ var Header = React.createClass({
   render: function() {
     var loggedInUser = this.props.loggedInUser;
     return (
-      <header className="masthead wrapper wrapper__match-content" role="banner">
-        <h1 className="masthead_logo">
-          <Icon type="web-round" />
-          <Link to="Home">DevDash</Link>
-        </h1>
-        <div className="masthead_user user-meta">
-          <CurrentUserInfo loggedInUser={loggedInUser} />
-        </div>
-      </header>
+      <nav className="ui menu inverted navbar page grid">
+          <h1><Link to="Home" className="brand item">DevDash</Link></h1>
+          <div className="right menu">
+              <div className="item"><CurrentUserInfo loggedInUser={loggedInUser} /></div>
+          </div>
+      </nav>
     );
   }
 
