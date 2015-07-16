@@ -31,7 +31,9 @@ var UserPage = React.createClass({
     var AddPubKey = '';
     if (this.props.loggedInUser.id == userId) {
       AddPubKey = (
+
         <div>
+          <h2>Public Key</h2>
           <h3>Update key:</h3>
           <textarea rows = "4" columns = "3" onChange = {this.handleChange}>
           </textarea>
@@ -43,7 +45,7 @@ var UserPage = React.createClass({
     return (
       <div className="userPage">
         <h1>{username}</h1>
-        <h2>Public Key</h2>
+
         {publicKey}
         {AddPubKey}
       </div>
