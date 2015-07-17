@@ -20,7 +20,7 @@ var UserItemReflux = React.createClass( {
   render: function() {
     return (
       <li className="user-item">
-        <button onClick={this.handleClick}>Remove user</button>
+        <button className="remove-item" onClick={this.handleClick}>Remove user</button>
         <span className="user-name">{this.props.name}</span>
       </li>
     )
