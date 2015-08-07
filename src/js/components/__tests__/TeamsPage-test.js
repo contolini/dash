@@ -94,7 +94,7 @@ describe('Page of teams', function() {
           }
         }
       ],
-      myTeams:function(){return this.models}
+      myTeams:function(){return [this.models[0]]}
     };
     /* eslint-enable */
 
@@ -120,8 +120,7 @@ describe('Page of teams', function() {
     var teamsPageComponent = TestUtils.scryRenderedDOMComponentsWithClass(teamsPage, 'teams-page')[0].props.children;
 
     var numTeams = teamsPageComponent.length;
-    consoel.log(TestUtils.scryRenderedDOMComponentsWithClass(teamsPage, 'teams-page-header')[0].props.children)
-    var canAdd = TestUtils.scryRenderedDOMComponentsWithClass(teamsPage, 'teams-page-header')[0].props.children[1].props.children;
+    var canAdd = TestUtils.scryRenderedDOMComponentsWithClass(teamsPage, 'teams-page-header')[1].props.children[1].props.children;
 
     expect(numTeams).toEqual(4);
     expect(canAdd.type.displayName).toBe('AddAsset');
@@ -142,9 +141,9 @@ describe('Page of teams', function() {
     var teamsPage = TestUtils.renderIntoDocument(
       <TeamsPage teamStore={teams} loggedInUser={loggedInUser} />
     );
-    var teamsPageComponent = TestUtils.scryRenderedDOMComponentsWithClass(teamsPage, 'teams-page')[0].props.children;
+    var teamsPageComponent = TestUtils.scryRenderedDOMComponentsWithClass(teamsPage, 'teams-page')[1].props.children;
 
-    var canAdd = TestUtils.scryRenderedDOMComponentsWithClass(teamsPage, 'teams-page-header')[0].props.children[1].props.children;
+    var canAdd = TestUtils.scryRenderedDOMComponentsWithClass(teamsPage, 'teams-page-header')[1].props.children[1].props.children;
     expect(canAdd).toBe('');
   });
 
