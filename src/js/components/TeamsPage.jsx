@@ -26,7 +26,6 @@ var TeamsPage = React.createClass({
       <section className="teams-page">
         <div className="teams-page-header">
           <h2 className="inline"> MyTeams</h2>
-          <span>{addTeam}</span>
         </div>
         <ul className="teams-page">
           <TeamList teams={myTeams} canRemove={false} />

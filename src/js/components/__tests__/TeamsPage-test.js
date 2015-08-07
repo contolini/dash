@@ -120,7 +120,7 @@ describe('Page of teams', function() {
     var teamsPageComponent = TestUtils.scryRenderedDOMComponentsWithClass(teamsPage, 'teams-page')[0].props.children;
 
     var numTeams = teamsPageComponent.length;
-
+    consoel.log(TestUtils.scryRenderedDOMComponentsWithClass(teamsPage, 'teams-page-header')[0].props.children)
     var canAdd = TestUtils.scryRenderedDOMComponentsWithClass(teamsPage, 'teams-page-header')[0].props.children[1].props.children;
 
     expect(numTeams).toEqual(4);

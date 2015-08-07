@@ -15,6 +15,12 @@ var UserPage = React.createClass({
       data: {publicKeys: [{name: 'moirai', key: this.state.newPublicKey}]}
     });
   },
+  handleUserAction: function(e){
+    UserActions.userData({
+      id: this.context.router.getCurrentParams().userId,
+      data: {publicKeys: [{name: 'moirai', key: this.state.newPublicKey}]}
+    });
+  },
   getInitialState: function(){
     return {
       newPublicKey: ''
@@ -29,6 +35,7 @@ var UserPage = React.createClass({
     this.setState({newPublicKey: event.target.value})
   },
   render: function(){
+    var userActions = '';
     var userId = this.context.router.getCurrentParams().userId;
     var user = this.props.users.get(userId);
     var userTeams = user.getTeams();
@@ -37,6 +44,8 @@ var UserPage = React.createClass({
     var publicKey = _.findWhere(publicKeys, {name: 'moirai'})
     publicKey = (publicKey) ? <p class="public-key">{publicKey.key}</p> : '';
     var AddPubKey = '';
+    user.isEnabled = false;
+    var label = (user.isEnabled) ? 'Disable' : 'Enable';
     if (this.props.loggedInUser.id == userId) {
       AddPubKey = (
         <div>
@@ -44,16 +53,22 @@ var UserPage = React.createClass({
           <textarea rows="4" columns="3" onChange={this.handleChange}>
           </textarea>
           <Button type={!this.state.newPublicKey.length ? 'disabled' : ''} label='Update public key'
-                  onClick={this.handleClick} disabled={!this.state.newPublicKey.length}/>
+                  onClick={this.handleClick} disabled={!this.state.newPublicKey.length} className="action-btn"/>
         </div>)
+    }
+    else {
+      userActions = (
+        <Button type={'default'} label={label} onclick={this.handleUserAction} className="action-btn"/>
+      )
     }
 
 
     return (
       <div className="userPage">
-        <h1>{username}</h1>
+        <h1>{username} {userActions}</h1>
 
         <h2>Teams</h2>
+
         <div className="teams-page">
           <TeamList teams={userTeams} canRemove={false}/>
         </div>

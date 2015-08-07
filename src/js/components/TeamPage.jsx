@@ -80,9 +80,8 @@ var TeamPage = React.createClass({
       )
     })
     return (
-      <div>{isInProgress}
+      <div>
         <h1>{teamName}
-          {isInProgress}
           <Button type={ isInProgress ? 'disabled' : 'default'} label="Refresh"
                   onClick={this.handleRefresh} className="action-btn"/></h1>
 
